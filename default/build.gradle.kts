@@ -53,7 +53,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
 	// Swagger
-	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9")
 
 	// Lombok
 	compileOnly("org.projectlombok:lombok:1.18.30")
@@ -84,18 +84,18 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-mail")
 
 	// Kafka
-	implementation ("org.springframework.kafka:spring-kafka") // Spring Boot에서 Kafka를 편하게 사용하도록 도와주는 라이브러리
-	implementation ("org.apache.kafka:kafka-streams") // Kafka의 스트림 API를 사용할 때 필요
-	implementation ("org.apache.kafka:kafka-clients") // Kafka 브로커와 직접 통신하는 기본 클라이언트 라이브러리
+	// implementation ("org.springframework.kafka:spring-kafka") // Spring Boot에서 Kafka를 편하게 사용하도록 도와주는 라이브러리
+	// implementation ("org.apache.kafka:kafka-streams") // Kafka의 스트림 API를 사용할 때 필요
+	// implementation ("org.apache.kafka:kafka-clients") // Kafka 브로커와 직접 통신하는 기본 클라이언트 라이브러리
 
 	// Slack
-	implementation("com.slack.api:slack-api-client:1.45.3")
+	// implementation("com.slack.api:slack-api-client:1.45.3")
 
 	//QueryDSL 추가
-	implementation ("com.querydsl:querydsl-apt:5.0.0")
-	implementation ("com.querydsl:querydsl-jpa:5.0.0:jakarta")
-	implementation ("com.querydsl:querydsl-core:5.0.0")
-	annotationProcessor ("com.querydsl:querydsl-apt:5.0.0:jakarta")
+	implementation ("com.querydsl:querydsl-apt:5.1.0")
+	implementation ("com.querydsl:querydsl-jpa:5.1.0:jakarta")
+	implementation ("com.querydsl:querydsl-core:5.1.0")
+	annotationProcessor ("com.querydsl:querydsl-apt:5.1.0:jakarta")
 	annotationProcessor ("jakarta.annotation:jakarta.annotation-api")
 	annotationProcessor ("jakarta.persistence:jakarta.persistence-api")
 
