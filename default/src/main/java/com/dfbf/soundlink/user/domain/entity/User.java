@@ -6,9 +6,6 @@ import com.dfbf.soundlink.global.common.ErrorMessages;
 import com.dfbf.soundlink.user.domain.vo.*;
 import lombok.Getter;
 
-import java.sql.Timestamp;
-import java.util.UUID;
-
 @Getter
 public class User {
     private final UserNo id;
@@ -20,27 +17,37 @@ public class User {
     private TimeMetadata timeMetadata;
 
     public User() {
-        id = new UserNo(UUID.randomUUID().toString());
+        this.id = new UserNo();
         this.socialInfo = new SocialInfo(SocialType.NONE, null);
     }
 
+    // 신규 생성(JPA Entity → Domain)
+    public User(UserNo id, SocialInfo socialInfo, LoginInfo loginInfo, Nickname nickname, Email email, TimeMetadata timeMetadata) {
+        this.id = id;
+        this.socialInfo = socialInfo;
+        this.loginInfo = loginInfo;
+        this.nickname = nickname;
+        this.email = email;
+        this.timeMetadata = timeMetadata;
+    }
+
     /**
-     * 회원가입
+     * 도메인 생성
      * @param socialInfo
      * @param nickname
      * @param email
      * @return User
      */
-    public User register(SocialInfo socialInfo, LoginInfo loginInfo, Nickname nickname, Email email) {
-        if (!socialInfo.socialType().isTypeChangeable()) {
+    public User create(SocialInfo socialInfo, LoginInfo loginInfo, Nickname nickname, Email email) {
+        if (!socialInfo.getSocialType().isTypeChangeable()) {
             throw new IllegalStateException(ErrorMessages.ALREADY_REGISTERED_SOCIAL_TYPE.getMsg());
         }
 
         this.socialInfo = socialInfo;
-        this.loginInfo = new LoginInfo(loginInfo.loginId(), null);
+        this.loginInfo = new LoginInfo(loginInfo.getLoginId(), loginInfo.getPassword());
         this.nickname = nickname;
         this.email = email;
-        this.timeMetadata = new TimeMetadata(new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()));
+        this.timeMetadata = null;
 
         return this;
     }
@@ -58,6 +65,6 @@ public class User {
             throw new IllegalStateException(ErrorMessages.NO_LOGIN_INFO.getMsg());
         }
 
-        this.loginInfo = new LoginInfo(loginInfo.loginId(), password);
+        this.loginInfo = new LoginInfo(loginInfo.getLoginId(), password);
     }
 }
