@@ -1,6 +1,5 @@
 package com.dfbf.soundlink.user.adapter.out.persistence.entity;
 
-import com.dfbf.soundlink.user.domain.enums.SocialType;
 import com.dfbf.soundlink.user.domain.vo.*;
 import jakarta.persistence.*;
 import lombok.*;

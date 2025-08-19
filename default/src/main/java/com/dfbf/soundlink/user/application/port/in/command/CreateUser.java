@@ -5,7 +5,7 @@ import com.dfbf.soundlink.user.domain.vo.LoginInfo;
 import com.dfbf.soundlink.user.domain.vo.Nickname;
 import com.dfbf.soundlink.user.domain.vo.SocialInfo;
 
-public record CreateUserCommand(
+public record CreateUser(
         Nickname nickname,
         SocialInfo socialInfo,
         LoginInfo loginInfo,
